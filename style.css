@@ -1,4 +1,6 @@
-html, body {
-    font-family: arial, sans-serif;
-    padding: 15px;
+:root {
+    --bleuPrimaire: #146C94;
+    --bleuSecondaire: #19A7CE;
+    --bleuTertiaire: #AFD3E2;
+    --beige: #F6F1F1;
 }
