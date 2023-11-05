@@ -9,6 +9,7 @@ html, body {
     margin: 0;
     background-color: var(--beige);
     font-family: consolas, monospace;
+    color: var(--bleuPrimaire);
 }
 
 header {
