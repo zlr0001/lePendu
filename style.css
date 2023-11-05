@@ -29,11 +29,15 @@ nav ul {
     justify-content: right;
     list-style: none;
 }
-nav li:nth-child(n+2):before, a {
+nav li:nth-child(n+2):before {
     padding-left: 5px;
     content: "/";
+    color: grey;
+}
+nav a {
+    padding-left: 5px;
     text-decoration: none;
-    color: var(--beige);
+    color: var(--yellow);
 }
 
 #logo {
@@ -59,17 +63,10 @@ main {
 }
 
 #textResponse {
-    border: none;
-    width: 84.2%;
-    background:
-            repeating-linear-gradient(90deg,
-            var(--bleuPrimaire) 0,
-            var(--bleuPrimaire) 1ch,
-            transparent 0,
-            transparent 1.5ch)
-            0 100%/100% 2px no-repeat;
+    background-color: transparent;
+    border: 1px solid var(--beige);
     color: var(--yellow);
-    font: 3ch consolas, monospace;
+    font-size: 1.5rem;
     letter-spacing: .5ch;
 }
 
