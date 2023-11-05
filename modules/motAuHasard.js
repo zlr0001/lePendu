@@ -1,4 +1,14 @@
-let url = `https://trouve-mot.fr/api/size/10/1`;
+let motDecoupe = "";
+let tailleDuMot = "";
+
+const tailleHasard = () => {
+    tailleDuMot = Math.floor(Math.random() * 7) + 6;
+    console.log(tailleDuMot);
+};
+
+tailleHasard();
+
+let url = `https://trouve-mot.fr/api/size/${tailleDuMot}/1`;
 
 export async function motHasard() {
     const requete = await fetch(url, {
@@ -10,5 +20,7 @@ export async function motHasard() {
     } else {
         let donnees = await requete.json();
         console.log(donnees[0].name);
+        console.log(donnees[0].name.split(""));
+        motDecoupe = donnees[0].name.split("");
     }
 }
