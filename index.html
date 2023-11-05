@@ -4,38 +4,34 @@
     <meta charset="UTF-8">
     <title>Le pendu</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Règle du jeu</a></li>
-                    <li><a href="#">À propos</a></li>
-                </ul>
-            </nav>
-            <div id="logo">
-                LE PENDU
-            </div>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Règle du jeu</a></li>
+                <li><a href="#">À propos</a></li>
+            </ul>
+        </nav>
+        <div id="logo">
+            LE PENDU
         </div>
     </header>
     
-    <section>
-        <div class="container">
-            <div id="hangman">
-                
-            </div>
-            <div id="response">
-                
-            </div>
+    <main class="container">
+        <div id="hangman">
+            <img src="sources/images/DevinezLeMot.png" alt="Image devinez le mot secret" sizes="376px" id="imagePendu">
         </div>
-    </section>
+        <div id="response">
+            <label for="textResponse">Votre réponse <br></label>
+            <input type="text" name="textResponse" id="textResponse" maxlength="12">
+        </div>
+    </main>
     
-    <footer>
-        <div class="container">
-            Créé par Mohamed Boumediene en 2023
-        </div>
+    <footer class="container">
+        Par par MB en 2023
     </footer>
     
     <script src="index.js"></script>
