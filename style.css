@@ -70,6 +70,21 @@ main {
     letter-spacing: .5ch;
 }
 
+#btnSubmit {
+    background-color: var(--bleuPrimaire);
+    border: none;
+    height: 35px;
+    color: var(--beige);
+    vertical-align: top;
+}
+#btnSubmit:hover {
+    box-shadow: inset 0 0 0 1px var(--beige);
+}
+#btnSubmit:active {
+    box-shadow: inset 0 0 1px 1px var(--yellow);
+    color: var(--yellow);
+}
+
 footer {
     width: 990px;
     margin: 0 auto;
