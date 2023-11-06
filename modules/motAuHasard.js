@@ -20,7 +20,7 @@ export async function motHasard() {
     } else {
         let donnees = await requete.json();
         console.log(donnees[0].name);
-        console.log(donnees[0].name.split(""));
         motDecoupe = donnees[0].name.split("");
+        console.log(donnees[0].name.split(""));
     }
 }
