@@ -1,3 +1,4 @@
+/*
 let motDecoupe = "";
 let tailleDuMot = "";
 let nbLettres = document.getElementById("nbLettres");
@@ -28,4 +29,4 @@ export async function motHasard() {
     } catch (error) {
         console.log(error);
     }
-}
+}*/
