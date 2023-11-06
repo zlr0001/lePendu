@@ -6,6 +6,7 @@ motHasard();*/
 let imgPendu = document.getElementById("imagePendu");
 let nbCoupJoue = document.getElementById("nbCoups");
 let motSecret = document.getElementById("motSecret");
+let forms = document.getElementById("forms");
 let inputReponse = document.getElementById("textResponse");
 let btnSubmit = document.getElementById("btnSubmit");
 
@@ -15,17 +16,16 @@ let nbLettres = document.getElementById("nbLettres");
 
 
 
-
+// fonction: choisir la taille du mot au hasard + l'afficher sur index.html
 const tailleHasard = () => {
     tailleDuMot = Math.floor(Math.random() * 7) + 6;
     nbLettres.textContent = tailleDuMot;
 };
 
-tailleHasard();
 
-let url = `https://trouve-mot.fr/api/size/${tailleDuMot}/1`;
-
+// fonction: api fetch pour obtenir un mot au hasard + ajout du mot sur l'index.html en display hidden
 export async function motHasard() {
+    let url = `https://trouve-mot.fr/api/size/${tailleDuMot}/1`;
     try {
         const requete = await fetch(url, {
             method: "GET"
@@ -44,10 +44,8 @@ export async function motHasard() {
     }
 }
 
-motHasard();
-
-
-btnSubmit.addEventListener("click", () => {
+const clickSubmit = (event) => {
+    event.preventDefault();
     let reponseEntree = inputReponse.value.split("");
     let recompositionReponse = reponseEntree.join();
     console.log(recompositionReponse);
@@ -56,5 +54,11 @@ btnSubmit.addEventListener("click", () => {
         console.log("oui");
     } else {
         console.log("non");
+        
     }
-});
+};
+
+tailleHasard();
+motHasard();
+
+forms.addEventListener("submit", clickSubmit(event));

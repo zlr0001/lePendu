@@ -95,3 +95,16 @@ footer {
     align-items: center;
 }
 
+@media screen and (max-width: 1000px) {
+    header {
+        width: 93.7vw;
+    }
+    
+    main {
+        width: 95vw;
+    }
+    
+    footer {
+        width: 93.7vw;
+    }
+}

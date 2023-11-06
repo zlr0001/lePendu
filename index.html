@@ -25,11 +25,13 @@
             <img src="sources/images/DevinezLeMot.png" alt="Image devinez le mot secret" sizes="376px" id="imagePendu">
         </div>
         <div id="response">
-            <label for="textResponse">Mot en <span id="nbLettres">x</span> lettres | 
-                <span id="nbCoups">0</span> / 6 coups <span id="motSecret"></span><br>
-            </label>
-            <input type="text" name="textResponse" id="textResponse" maxlength="12">
-            <input type="submit" value="Essayer" id="btnSubmit">
+            <form id="forms">
+                <label for="textResponse">Mot en <span id="nbLettres">x</span> lettres |
+                    <span id="nbCoups">0</span> / 6 coups <span id="motSecret"></span><br>
+                </label>
+                <input type="text" name="textResponse" id="textResponse" maxlength="12">
+                <button type="submit" id="btnSubmit">Essayer</button>
+            </form>
         </div>
     </main>
     
