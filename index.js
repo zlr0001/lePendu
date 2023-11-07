@@ -4,11 +4,12 @@ motHasard();*/
 
 
 let imgPendu = document.getElementById("imagePendu");
-let nbCoupJoue = document.getElementById("nbCoups");
+let nbCoupJoue = Number(document.getElementById("nbCoups"));
 let motSecret = document.getElementById("motSecret");
 let forms = document.getElementById("forms");
 let inputReponse = document.getElementById("textResponse");
 let btnSubmit = document.getElementById("btnSubmit");
+let tried = document.getElementById("tried");
 
 let motDecoupe = "";
 let tailleDuMot = "";
@@ -44,7 +45,10 @@ export async function motHasard() {
     }
 }
 
-const clickSubmit = (event) => {
+tailleHasard();
+motHasard();
+
+forms.addEventListener("submit", (event) => {
     event.preventDefault();
     let reponseEntree = inputReponse.value.split("");
     let recompositionReponse = reponseEntree.join();
@@ -54,11 +58,12 @@ const clickSubmit = (event) => {
         console.log("oui");
     } else {
         console.log("non");
-        
+        for (let i = 0; i < inputReponse.value.length; i++) {
+            let coups = document.createElement("span");
+            coups.innerHTML = `${inputReponse.value[i]}`;
+            tried.append(coups);
+        }
+        // coups.innerHTML = `${inputReponse.value}`;
+        // tried.append(coups);
     }
-};
-
-tailleHasard();
-motHasard();
-
-forms.addEventListener("submit", clickSubmit(event));
+});
