@@ -59,9 +59,15 @@ forms.addEventListener("submit", (event) => {
     } else {
         console.log("non");
         for (let i = 0; i < inputReponse.value.length; i++) {
-            let coups = document.createElement("span");
-            coups.innerHTML = `${inputReponse.value[i]}`;
-            tried.append(coups);
+            if (i+1 === inputReponse.value.length) {
+                let coups = document.createElement("span");
+                coups.innerHTML = `${inputReponse.value[i]}<br>`;
+                tried.append(coups);
+            } else {
+                let coups = document.createElement("span");
+                coups.innerHTML = `${inputReponse.value[i]}`;
+                tried.append(coups);
+            }
         }
         // coups.innerHTML = `${inputReponse.value}`;
         // tried.append(coups);
