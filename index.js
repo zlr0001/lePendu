@@ -69,7 +69,6 @@ forms.addEventListener("submit", (event) => {
                 tried.append(coups);
             }
         }
-        // coups.innerHTML = `${inputReponse.value}`;
-        // tried.append(coups);
+        inputReponse.textContent = "";
     }
 });
