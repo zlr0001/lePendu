@@ -65,14 +65,16 @@ forms.addEventListener("submit", (event) => {
         console.log("non");
         let comparaison = [];
         for (let i = 0; i < reponseEntree.length; i++) {
-            if (reponseEntree[i] === motDecoupe[j]) {
+            if (motDecoupe.includes(reponseEntree[i])) {
                 comparaison.push(inputReponse.value[i]);
-                tried.append(comparaison);
+                console.log(comparaison);
             } else {
                 comparaison.push("-");
-                tried.append(comparaison);
             }
         }
+        tried.append(comparaison);
+        let retourLigne = document.createElement("br");
+        tried.append(retourLigne);
         inputReponse.value = "";
     }
 });
