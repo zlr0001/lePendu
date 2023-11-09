@@ -57,29 +57,20 @@ forms.addEventListener("submit", (event) => {
     let recompositionReponse = reponseEntree.join();
     
     console.log(recompositionReponse);
-    console.log(motSecret);
+    console.log(reponseEntree);
     
     if (recompositionReponse === motSecret.textContent) {
         console.log("oui");
     } else {
         console.log("non");
+        let comparaison = [];
         for (let i = 0; i < reponseEntree.length; i++) {
-            for (let j = 0; j < motDecoupe.length; j++) {
-                if (reponseEntree[i] === motDecoupe[j]) {
-                    if (i+1 === inputReponse.value.length) {
-                        let coups = document.createElement("span");
-                        coups.innerHTML = `${inputReponse.value[i]}<br>`;
-                        tried.append(coups);
-                    } else {
-                        let coups = document.createElement("span");
-                        coups.innerHTML = `${inputReponse.value[i]}`;
-                        tried.append(coups);
-                    }
-                } else {
-                    let coups = document.createElement("span");
-                    coups.innerHTML = `-`;
-                    tried.append(coups);
-                }
+            if (reponseEntree[i] === motDecoupe[j]) {
+                comparaison.push(inputReponse.value[i]);
+                tried.append(comparaison);
+            } else {
+                comparaison.push("-");
+                tried.append(comparaison);
             }
         }
         inputReponse.value = "";
