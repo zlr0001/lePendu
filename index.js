@@ -4,6 +4,7 @@ motHasard();*/
 
 
 let imgPendu = document.getElementById("imagePendu");
+let categorie = document.getElementById("categorie");
 let nbCoupJoue = Number(document.getElementById("nbCoups"));
 let motSecret = document.getElementById("motSecret");
 let forms = document.getElementById("forms");
@@ -38,8 +39,8 @@ export async function motHasard() {
             let donnees = await requete.json();
             motDecoupe = donnees[0].name.split("");
             motSecret.innerHTML = motDecoupe;
+            categorie.innerHTML = donnees[0].categorie;
             inputReponse.setAttribute("maxlength",`${tailleDuMot}`);
-            console.log(motSecret);
         }
     } catch (error) {
         console.log(error);
@@ -48,6 +49,7 @@ export async function motHasard() {
 
 tailleHasard();
 motHasard();
+
 
 forms.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -61,17 +63,25 @@ forms.addEventListener("submit", (event) => {
         console.log("oui");
     } else {
         console.log("non");
-        for (let i = 0; i < inputReponse.value.length; i++) {
-            if (i+1 === inputReponse.value.length) {
-                let coups = document.createElement("span");
-                coups.innerHTML = `${inputReponse.value[i]}<br>`;
-                tried.append(coups);
-            } else {
-                let coups = document.createElement("span");
-                coups.innerHTML = `${inputReponse.value[i]}`;
-                tried.append(coups);
+        for (let i = 0; i < reponseEntree.length; i++) {
+            for (let j = 0; j < motDecoupe.length; j++) {
+                if (reponseEntree[i] === motDecoupe[j]) {
+                    if (i+1 === inputReponse.value.length) {
+                        let coups = document.createElement("span");
+                        coups.innerHTML = `${inputReponse.value[i]}<br>`;
+                        tried.append(coups);
+                    } else {
+                        let coups = document.createElement("span");
+                        coups.innerHTML = `${inputReponse.value[i]}`;
+                        tried.append(coups);
+                    }
+                } else {
+                    let coups = document.createElement("span");
+                    coups.innerHTML = `-`;
+                    tried.append(coups);
+                }
             }
         }
-        inputReponse.textContent = "";
+        inputReponse.value = "";
     }
 });
