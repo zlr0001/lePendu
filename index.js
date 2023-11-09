@@ -38,6 +38,7 @@ export async function motHasard() {
             let donnees = await requete.json();
             motDecoupe = donnees[0].name.split("");
             motSecret.innerHTML = motDecoupe;
+            inputReponse.setAttribute("maxlength",`${tailleDuMot}`);
             console.log(motSecret);
         }
     } catch (error) {
@@ -52,8 +53,10 @@ forms.addEventListener("submit", (event) => {
     event.preventDefault();
     let reponseEntree = inputReponse.value.split("");
     let recompositionReponse = reponseEntree.join();
+    
     console.log(recompositionReponse);
     console.log(motSecret);
+    
     if (recompositionReponse === motSecret.textContent) {
         console.log("oui");
     } else {
