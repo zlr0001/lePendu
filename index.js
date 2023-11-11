@@ -2,14 +2,12 @@
 
 motHasard();*/
 
-
 let imgPendu = document.getElementById("imagePendu");
 let categorie = document.getElementById("categorie");
-let nbCoupJoue = Number(document.getElementById("nbCoups"));
+let nbCoups = document.getElementById("nbCoups");
 let motSecret = document.getElementById("motSecret");
 let forms = document.getElementById("forms");
 let inputReponse = document.getElementById("textResponse");
-let btnSubmit = document.getElementById("btnSubmit");
 let tried = document.getElementById("tried");
 
 let motDecoupe = "";
@@ -41,6 +39,7 @@ export async function motHasard() {
             motSecret.innerHTML = motDecoupe;
             categorie.innerHTML = donnees[0].categorie;
             inputReponse.setAttribute("maxlength",`${tailleDuMot}`);
+            inputReponse.setAttribute("minlength",`${tailleDuMot}`);
         }
     } catch (error) {
         console.log(error);
@@ -56,22 +55,29 @@ forms.addEventListener("submit", (event) => {
     let reponseEntree = inputReponse.value.split("");
     let recompositionReponse = reponseEntree.join();
     
-    console.log(recompositionReponse);
-    console.log(reponseEntree);
     
     if (recompositionReponse === motSecret.textContent) {
         console.log("oui");
+        inputReponse.setAttribute("disabled", "");
+        inputReponse.value = "Bravo !";
     } else {
         console.log("non");
         let comparaison = [];
         for (let i = 0; i < reponseEntree.length; i++) {
             if (motDecoupe.includes(reponseEntree[i])) {
                 comparaison.push(inputReponse.value[i]);
-                console.log(comparaison);
             } else {
                 comparaison.push("-");
             }
         }
+
+        for (let i = 0; i < motDecoupe.length; i++) {
+            if (comparaison[i] !== motDecoupe[i]) {
+                comparaison[i] = "-";
+                console.log(comparaison);
+            }
+        }
+        
         tried.append(comparaison);
         let retourLigne = document.createElement("br");
         tried.append(retourLigne);
