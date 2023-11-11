@@ -55,38 +55,52 @@ forms.addEventListener("submit", (event) => {
     let reponseEntree = inputReponse.value.split("");
     let recompositionReponse = reponseEntree.join();
     
-    if (recompositionReponse === motSecret.textContent) {
-        console.log("oui");
-        inputReponse.setAttribute("disabled", "");
-        inputReponse.value = "Bravo !";
-    } else {
-        console.log("non");
-        let comparaison = [];
-        for (let i = 0; i < reponseEntree.length; i++) {
-            if (motDecoupe.includes(reponseEntree[i])) {
-                comparaison.push(inputReponse.value[i]);
-            } else {
-                comparaison.push("-");
-            }
-        }
 
-        for (let i = 0; i < motDecoupe.length; i++) {
-            if (comparaison[i] !== motDecoupe[i]) {
-                comparaison[i] = "-";
+        if (recompositionReponse === motSecret.textContent) {
+            console.log("oui");
+            inputReponse.setAttribute("disabled", "");
+            inputReponse.value = "Bravo !";
+            inputReponse.style.backgroundColor = "white";
+            inputReponse.style.color = "green";
+        } else {
+            console.log("non");
+            let comparaison = [];
+            for (let i = 0; i < reponseEntree.length; i++) {
+                if (motDecoupe.includes(reponseEntree[i])) {
+                    comparaison.push(inputReponse.value[i]);
+                } else {
+                    comparaison.push("-");
+                }
+            }
+
+            for (let i = 0; i < motDecoupe.length; i++) {
+                if (comparaison[i] !== motDecoupe[i]) {
+                    comparaison[i] = "-";
+                }
+            }
+
+            tried.append(comparaison);
+            let retourLigne = document.createElement("br");
+            tried.append(retourLigne);
+            inputReponse.value = "";
+            nbCoups = nbCoups + 1;
+            console.log(nbCoups);
+
+            if (nbCoups >= 6) {
+                inputReponse.setAttribute("disabled", "");
+                inputReponse.value = "Perdu !"
+                inputReponse.style.backgroundColor = "white";
+                inputReponse.style.color = "red";
             }
         }
-        
-        tried.append(comparaison);
-        let retourLigne = document.createElement("br");
-        tried.append(retourLigne);
-        inputReponse.value = "";
-        nbCoups = nbCoups + 1;
-    }
     nouvelleImage();
 });
 
 const nouvelleImage = () => {
     switch (nbCoups) {
+        case 0:
+            imgPendu.setAttribute("src", "sources/images/DevinezLeMot.png");
+            break;
         case 1:
             imgPendu.setAttribute("src", "sources/images/pendu1.png");
             break;
