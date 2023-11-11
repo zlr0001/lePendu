@@ -4,6 +4,7 @@ let nbCoups = parseInt(document.getElementById("nbCoups").innerHTML);
 let motSecret = document.getElementById("motSecret");
 let forms = document.getElementById("forms");
 let inputReponse = document.getElementById("textResponse");
+let btnSubmit = document.getElementById("btnSubmit");
 let tried = document.getElementById("tried");
 
 let motDecoupe = "";
@@ -52,6 +53,7 @@ const gestionDesTentatives = () => {
         inputReponse.value = "Bravo !";
         inputReponse.style.backgroundColor = "white";
         inputReponse.style.color = "green";
+        btnSubmit.disabled = true;
     }
     else {
         console.log("non");
