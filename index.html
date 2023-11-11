@@ -25,16 +25,24 @@
             <img src="sources/images/DevinezLeMot.png" alt="Image devinez le mot secret" sizes="376px" id="imagePendu">
         </div>
         <div id="response">
-            <label for="textResponse">Votre réponse | <span id="nbCoups">0</span> / 6 coups<br></label>
-            <input type="text" name="textResponse" id="textResponse" maxlength="12">
-            <input type="submit" value="Essayer" id="btnSubmit">
+            <form id="forms">
+                <label for="textResponse">Catégorie : <span id="categorie"></span>
+                     | Mot en <span id="nbLettres">x</span> lettres
+                    <span id="nbCoups" style="display: none">0</span>
+                    <span id="motSecret" style="display: none"></span><br>
+                </label>
+                <input type="text" name="textResponse" id="textResponse" maxlength="12">
+                <button type="submit" id="btnSubmit">Essayer</button>
+            </form>
+            
+            <div id="tried"></div>
         </div>
     </main>
     
     <footer class="container">
         Par par MB en 2023
     </footer>
-    
+
     <script type="module" src="index.js"></script>
 </body>
 </html>
