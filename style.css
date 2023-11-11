@@ -17,7 +17,7 @@ header {
     flex-direction: column;
     width: 990px;
     margin: 0 auto;
-    padding: 5px;
+    padding: 0 5px 0 5px;
     height: 15vh;
     background-color: var(--bleuPrimaire);
     color: var(--beige);
@@ -49,8 +49,9 @@ nav a {
 }
 
 main {
-    width: 1000px;
+    width: 990px;
     margin: 0 auto;
+    padding: 0 5px 0 5px;
     height: 85vh;
     background-color: var(--bleuSecondaire);
     display: flex;
@@ -60,6 +61,12 @@ main {
 
 #imagePendu {
     filter: drop-shadow(1px 1px 1px var(--bleuPrimaire));
+}
+
+#forms {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 #textResponse {
@@ -88,7 +95,7 @@ main {
 footer {
     width: 990px;
     margin: 0 auto;
-    padding: 5px;
+    padding: 0 5px 0 5px;
     height: 100px;
     background-color: var(--yellow);
     display: flex;
@@ -97,7 +104,7 @@ footer {
 
 @media screen and (max-width: 1000px) {
     header {
-        width: 93.7vw;
+        width: 95vw;
     }
     
     main {
@@ -105,6 +112,6 @@ footer {
     }
     
     footer {
-        width: 93.7vw;
+        width: 95vw;
     }
 }
