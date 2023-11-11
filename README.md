@@ -21,7 +21,7 @@ La taille d'entête, contenu et pied de page sont proportionnels et conservent l
 Le pied de page est fixé en bas, nous sommes obligés de défiler la page vers le bas pour le voir.
 
 ##### Display
-Flexbox a été privilégié car la présentation de la page est basique.
+Flexbox a été privilégié car la présentation de la page est basique. La page est aussi responsive, avec une préférence sans point d’arrêt car je trouve que la navigation est plus fluide.
 
 ### Mécanique de jeu
 #### Image
