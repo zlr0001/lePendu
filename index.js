@@ -83,4 +83,30 @@ forms.addEventListener("submit", (event) => {
         tried.append(retourLigne);
         inputReponse.value = "";
     }
+    nouvelleImage();
 });
+
+const nouvelleImage = () => {
+    switch (nbCoupFormatNum) {
+        case 1:
+            imgPendu.setAttribute("src", "sources/images/pendu1.png");
+            break;
+        case 2:
+            imgPendu.setAttribute("src", "sources/images/pendu2.png");
+            break;
+        case 3:
+            imgPendu.setAttribute("src", "sources/images/pendu3.png");
+            break;
+        case 4:
+            imgPendu.setAttribute("src", "sources/images/pendu4.png");
+            break;
+        case 5:
+            imgPendu.setAttribute("src", "sources/images/pendu5.png");
+            break;
+        case 6:
+            imgPendu.setAttribute("src", "sources/images/pendu6.png");
+            break;
+        default:
+            imgPendu.setAttribute("src", "sources/images/DevinezLeMot.png");
+    }
+};
