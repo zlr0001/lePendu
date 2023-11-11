@@ -4,7 +4,7 @@ motHasard();*/
 
 let imgPendu = document.getElementById("imagePendu");
 let categorie = document.getElementById("categorie");
-let nbCoups = document.getElementById("nbCoups");
+let nbCoups = parseInt(document.getElementById("nbCoups").innerHTML);
 let motSecret = document.getElementById("motSecret");
 let forms = document.getElementById("forms");
 let inputReponse = document.getElementById("textResponse");
@@ -13,7 +13,6 @@ let tried = document.getElementById("tried");
 let motDecoupe = "";
 let tailleDuMot = "";
 let nbLettres = document.getElementById("nbLettres");
-
 
 
 // fonction: choisir la taille du mot au hasard + l'afficher sur index.html
@@ -36,6 +35,7 @@ export async function motHasard() {
         } else {
             let donnees = await requete.json();
             motDecoupe = donnees[0].name.split("");
+            console.log(motDecoupe);
             motSecret.innerHTML = motDecoupe;
             categorie.innerHTML = donnees[0].categorie;
             inputReponse.setAttribute("maxlength",`${tailleDuMot}`);
@@ -55,7 +55,6 @@ forms.addEventListener("submit", (event) => {
     let reponseEntree = inputReponse.value.split("");
     let recompositionReponse = reponseEntree.join();
     
-    
     if (recompositionReponse === motSecret.textContent) {
         console.log("oui");
         inputReponse.setAttribute("disabled", "");
@@ -74,7 +73,6 @@ forms.addEventListener("submit", (event) => {
         for (let i = 0; i < motDecoupe.length; i++) {
             if (comparaison[i] !== motDecoupe[i]) {
                 comparaison[i] = "-";
-                console.log(comparaison);
             }
         }
         
@@ -82,12 +80,13 @@ forms.addEventListener("submit", (event) => {
         let retourLigne = document.createElement("br");
         tried.append(retourLigne);
         inputReponse.value = "";
+        nbCoups = nbCoups + 1;
     }
     nouvelleImage();
 });
 
 const nouvelleImage = () => {
-    switch (nbCoupFormatNum) {
+    switch (nbCoups) {
         case 1:
             imgPendu.setAttribute("src", "sources/images/pendu1.png");
             break;
