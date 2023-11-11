@@ -1,7 +1,3 @@
-/*import {motHasard} from "./modules/motAuHasard.js";
-
-motHasard();*/
-
 let imgPendu = document.getElementById("imagePendu");
 let categorie = document.getElementById("categorie");
 let nbCoups = parseInt(document.getElementById("nbCoups").innerHTML);
@@ -22,7 +18,7 @@ const tailleHasard = () => {
 };
 
 
-// fonction: api fetch pour obtenir un mot au hasard + ajout du mot sur l'index.html en display hidden
+// fonction: api fetch pour obtenir un mot au hasard + gestion de la taille d'input
 export async function motHasard() {
     let url = `https://trouve-mot.fr/api/size/${tailleDuMot}/1`;
     try {
@@ -96,6 +92,7 @@ forms.addEventListener("submit", (event) => {
     nouvelleImage();
 });
 
+// gestion de l'image en fonction du nombre de tentatives
 const nouvelleImage = () => {
     switch (nbCoups) {
         case 0:
