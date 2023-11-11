@@ -53,7 +53,8 @@ const gestionDesTentatives = () => {
         inputReponse.value = "Bravo !";
         inputReponse.style.backgroundColor = "white";
         inputReponse.style.color = "green";
-        btnSubmit.disabled = true;
+        btnSubmit.textContent = "Ressayer";
+        forms.addEventListener("submit", () => location.reload());
     }
     else {
         console.log("non");
@@ -84,7 +85,8 @@ const gestionDesTentatives = () => {
             inputReponse.value = "Perdu !"
             inputReponse.style.backgroundColor = "white";
             inputReponse.style.color = "red";
-            btnSubmit.disabled = true;
+            btnSubmit.textContent = "Ressayer";
+            forms.addEventListener("submit", () => location.reload());
         }
     }
 }
