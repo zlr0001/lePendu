@@ -84,6 +84,7 @@ const gestionDesTentatives = () => {
             inputReponse.value = "Perdu !"
             inputReponse.style.backgroundColor = "white";
             inputReponse.style.color = "red";
+            btnSubmit.disabled = true;
         }
     }
 }
