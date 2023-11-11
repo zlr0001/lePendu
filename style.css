@@ -23,23 +23,6 @@ header {
     color: var(--beige);
 }
 
-nav ul {
-    margin: 0;
-    display: flex;
-    justify-content: right;
-    list-style: none;
-}
-nav li:nth-child(n+2):before {
-    padding-left: 5px;
-    content: "/";
-    color: grey;
-}
-nav a {
-    padding-left: 5px;
-    text-decoration: none;
-    color: var(--yellow);
-}
-
 #logo {
     display: flex;
     justify-content: center;
