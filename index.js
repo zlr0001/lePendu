@@ -10,11 +10,12 @@ let tried = document.getElementById("tried");
 let motDecoupe = "";
 let tailleDuMot = "";
 let nbLettres = document.getElementById("nbLettres");
+let comparaison = [];
 
 
 // fonction: choisir la taille du mot au hasard + l'afficher sur index.html
 const tailleHasard = () => {
-    tailleDuMot = Math.floor(Math.random() * 7) + 6;
+    tailleDuMot = Math.floor(Math.random() + 6);
     nbLettres.textContent = tailleDuMot;
 };
 
@@ -34,8 +35,6 @@ export async function motHasard() {
             console.log(motDecoupe);
             motSecret.innerHTML = motDecoupe;
             categorie.innerHTML = donnees[0].categorie;
-            inputReponse.setAttribute("maxlength",`${tailleDuMot}`);
-            inputReponse.setAttribute("minlength",`${tailleDuMot}`);
         }
     } catch (error) {
         console.log(error);
@@ -44,10 +43,39 @@ export async function motHasard() {
 
 // Gestion des tentatives du joueur
 const gestionDesTentatives = () => {
-    let reponseEntree = inputReponse.value.split("");
-    let recompositionReponse = reponseEntree.join();
-    
-    if (recompositionReponse === motSecret.textContent) {
+    console.log("non");
+    for (let i = 0; i < motDecoupe.length; i++) {
+        comparaison.push("-");
+    }
+
+    if (motDecoupe.includes(inputReponse.value)) {
+        for (let j = 0; j < motDecoupe.length; j++) {
+            if (inputReponse.value === motDecoupe[j]) {
+                comparaison[j] = inputReponse.value;
+            }
+        }
+    }
+
+    console.log(comparaison.slice(0, motDecoupe.length).join(""));
+    console.log(motDecoupe.join(""));
+
+    tried.append(comparaison.slice(0, motDecoupe.length));
+    let retourLigne = document.createElement("br");
+    tried.append(retourLigne);
+    inputReponse.value = "";
+    nbCoups = nbCoups + 1;
+    console.log(nbCoups);
+
+    if (nbCoups >= 6) {
+        inputReponse.setAttribute("disabled", "");
+        inputReponse.value = "Perdu !"
+        inputReponse.style.backgroundColor = "white";
+        inputReponse.style.color = "red";
+        btnSubmit.textContent = "Ressayer";
+        forms.addEventListener("submit", () => location.reload());
+    }
+
+    if (comparaison.slice(0, motDecoupe.length).join("") === motDecoupe.join("")) {
         console.log("oui");
         inputReponse.setAttribute("disabled", "");
         inputReponse.value = "Bravo !";
@@ -55,39 +83,6 @@ const gestionDesTentatives = () => {
         inputReponse.style.color = "green";
         btnSubmit.textContent = "Ressayer";
         forms.addEventListener("submit", () => location.reload());
-    }
-    else {
-        console.log("non");
-        let comparaison = [];
-        for (let i = 0; i < reponseEntree.length; i++) {
-            if (motDecoupe.includes(reponseEntree[i])) {
-                comparaison.push(inputReponse.value[i]);
-            } else {
-                comparaison.push("-");
-            }
-        }
-
-        for (let i = 0; i < motDecoupe.length; i++) {
-            if (comparaison[i] !== motDecoupe[i]) {
-                comparaison[i] = "-";
-            }
-        }
-
-        tried.append(comparaison);
-        let retourLigne = document.createElement("br");
-        tried.append(retourLigne);
-        inputReponse.value = "";
-        nbCoups = nbCoups + 1;
-        console.log(nbCoups);
-
-        if (nbCoups >= 6) {
-            inputReponse.setAttribute("disabled", "");
-            inputReponse.value = "Perdu !"
-            inputReponse.style.backgroundColor = "white";
-            inputReponse.style.color = "red";
-            btnSubmit.textContent = "Ressayer";
-            forms.addEventListener("submit", () => location.reload());
-        }
     }
 }
 
